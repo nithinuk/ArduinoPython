@@ -1,10 +1,10 @@
 import serial
 import time
 
-arduino = serial.Serial('/dev/cu.usbmodem14101', 9600)
+arduino = serial.Serial(port='/dev/cu.usbmodem14101', baudrate=9600)
 time.sleep(2)
+print("Connected to Arduino...")
 
-#print (arduino.readline())
 print ("Enter '1' to turn 'on' the LED and '0' to turn LED 'off'")
 
 while 1:
@@ -20,3 +20,6 @@ while 1:
     if var == '0':
         arduino.write(str.encode('0'))
         print("LED turned off")
+
+    if var == 'q':
+        break
