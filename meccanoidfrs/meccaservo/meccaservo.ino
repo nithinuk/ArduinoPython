@@ -44,6 +44,7 @@ void setup() {
   // initialize serial communication:
   Serial.begin(9600);
   pinMode(5, OUTPUT);
+  servo.setServoColor(1, 0xF4);  // Set default color
   servo.setServoColor(0, 0xF4);  // Set default color
   servo.setServoPosition(0,0);
   
@@ -69,6 +70,7 @@ void loop(){
   {
     servo.communicate();
     servo.setServoColor(0, 0xF2); // Set color green
+    servo.setServoColor(1, 0xF1); // Set color red
     Serial.println("Face Tracked");   // print output on serial monitor
 
     if (i >= 239) {
@@ -81,6 +83,7 @@ void loop(){
       i = i + 1;
       servo.communicate();
       servo.setServoPosition(0,i);
+      servo.setServoPosition(1,i);
     }
     
     delay(1200);
@@ -92,6 +95,7 @@ void loop(){
   {
     servo.communicate();
     servo.setServoColor(0, 0xF4); // Set color blue
+    servo.setServoColor(1, 0xF4); // Set color blue
     Serial.println("Tracking...");   // print output on serial monitor
     delay(300);
   }
